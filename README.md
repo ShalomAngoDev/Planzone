@@ -189,4 +189,4 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de 
 
 ## Contact
 
-[Votre Nom] - [angoshalom@gmail.com]
+[ANGO Shalom] - [angoshalom@gmail.com]
