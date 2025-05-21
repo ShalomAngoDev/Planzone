@@ -1,0 +1,136 @@
+<div class="profile-container">
+  <h1 class="page-title">Mon profil</h1>
+  
+  <div class="loading-container" *ngIf="loading">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+  
+  <div class="profile-content" *ngIf="!loading">
+    <mat-card class="profile-card">
+      <mat-card-header>
+        <div mat-card-avatar class="profile-avatar">
+          <mat-icon>account_circle</mat-icon>
+        </div>
+        <mat-card-title>{{ user?.username }}</mat-card-title>
+        <mat-card-subtitle>{{ user?.email }}</mat-card-subtitle>
+      </mat-card-header>
+      
+      <mat-card-content>
+        <div class="profile-info">
+          <h2>Informations personnelles</h2>
+          
+          <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Nom d'utilisateur</mat-label>
+              <input matInput formControlName="username" required>
+              <mat-error *ngIf="profileForm.get('username')?.hasError('required')">
+                Le nom d'utilisateur est requis
+              </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Email</mat-label>
+              <input matInput type="email" formControlName="email" required>
+              <mat-error *ngIf="profileForm.get('email')?.hasError('required')">
+                L'email est requis
+              </mat-error>
+              <mat-error *ngIf="profileForm.get('email')?.hasError('email')">
+                Veuillez saisir une adresse email valide
+              </mat-error>
+            </mat-form-field>
+            
+            <div class="form-actions">
+              <button mat-raised-button color="primary" type="submit" [disabled]="profileForm.invalid || isSaving">
+                <mat-spinner *ngIf="isSaving" diameter="20"></mat-spinner>
+                <span *ngIf="!isSaving">Enregistrer</span>
+              </button>
+            </div>
+            
+            <div class="update-success" *ngIf="updateSuccess">
+              <mat-icon>check_circle</mat-icon>
+              <span>Profil mis à jour avec succès !</span>
+            </div>
+            
+            <div class="update-error" *ngIf="updateError">
+              <mat-icon>error</mat-icon>
+              <span>{{ updateError }}</span>
+            </div>
+          </form>
+        </div>
+        
+        <mat-divider class="section-divider"></mat-divider>
+        
+        <div class="password-section">
+          <h2>Changer le mot de passe</h2>
+          
+          <form [formGroup]="passwordForm" (ngSubmit)="changePassword()">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Mot de passe actuel</mat-label>
+              <input matInput type="password" formControlName="currentPassword" required>
+              <mat-error *ngIf="passwordForm.get('currentPassword')?.hasError('required')">
+                Le mot de passe actuel est requis
+              </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Nouveau mot de passe</mat-label>
+              <input matInput type="password" formControlName="newPassword" required>
+              <mat-error *ngIf="passwordForm.get('newPassword')?.hasError('required')">
+                Le nouveau mot de passe est requis
+              </mat-error>
+              <mat-error *ngIf="passwordForm.get('newPassword')?.hasError('minlength')">
+                Le mot de passe doit contenir au moins 6 caractères
+              </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Confirmer le nouveau mot de passe</mat-label>
+              <input matInput type="password" formControlName="confirmPassword" required>
+              <mat-error *ngIf="passwordForm.get('confirmPassword')?.hasError('required')">
+                La confirmation du mot de passe est requise
+              </mat-error>
+              <mat-error *ngIf="passwordForm.get('confirmPassword')?.hasError('passwordMismatch')">
+                Les mots de passe ne correspondent pas
+              </mat-error>
+            </mat-form-field>
+            
+            <div class="form-actions">
+              <button mat-raised-button color="primary" type="submit" [disabled]="passwordForm.invalid || isChangingPassword">
+                <mat-spinner *ngIf="isChangingPassword" diameter="20"></mat-spinner>
+                <span *ngIf="!isChangingPassword">Changer le mot de passe</span>
+              </button>
+            </div>
+            
+            <div class="update-success" *ngIf="passwordSuccess">
+              <mat-icon>check_circle</mat-icon>
+              <span>Mot de passe mis à jour avec succès !</span>
+            </div>
+            
+            <div class="update-error" *ngIf="passwordError">
+              <mat-icon>error</mat-icon>
+              <span>{{ passwordError }}</span>
+            </div>
+          </form>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    
+    <mat-card class="stats-card">
+      <mat-card-content>
+        <h2>Vos statistiques</h2>
+        
+        <div class="stats-container">
+          <div class="stat-item">
+            <div class="stat-value">{{ bookingsCount }}</div>
+            <div class="stat-label">Réservations</div>
+          </div>
+          
+          <div class="stat-item">
+            <div class="stat-value">{{ upcomingEventsCount }}</div>
+            <div class="stat-label">Événements à venir</div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

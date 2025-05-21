@@ -1,0 +1,75 @@
+<div class="events-container">
+  <div class="events-header">
+    <h1 class="page-title">Événements à venir</h1>
+    
+    <div class="filters">
+      <mat-form-field appearance="outline">
+        <mat-label>Rechercher</mat-label>
+        <input matInput placeholder="Nom, lieu, organisateur..." [(ngModel)]="searchTerm" (keyup)="applyFilter()">
+        <button *ngIf="searchTerm" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearch()">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-icon matPrefix>search</mat-icon>
+      </mat-form-field>
+      
+      <mat-button-toggle-group [(ngModel)]="selectedCategory" (change)="applyFilter()">
+        <mat-button-toggle value="">Tous</mat-button-toggle>
+        <mat-button-toggle value="Concert">Concerts</mat-button-toggle>
+        <mat-button-toggle value="Conférence">Conférences</mat-button-toggle>
+        <mat-button-toggle value="Atelier">Ateliers</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+  </div>
+  
+  <div class="loading-container" *ngIf="loading">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+  
+  <div class="no-events" *ngIf="!loading && filteredEvents.length === 0">
+    <mat-icon>event_busy</mat-icon>
+    <h2>Aucun événement trouvé</h2>
+    <p>Essayez d'ajuster vos critères de recherche.</p>
+  </div>
+  
+  <div class="events-grid" *ngIf="!loading && filteredEvents.length > 0">
+    <mat-card class="event-card" *ngFor="let event of filteredEvents">
+      <img mat-card-image [src]="event.imageUrl || 'https://via.placeholder.com/300x150'" alt="{{ event.title }}">
+      
+      <mat-card-content>
+        <div class="event-info">
+          <h2 class="event-title">{{ event.title }}</h2>
+          
+          <div class="event-details">
+            <div class="detail">
+              <mat-icon>access_time</mat-icon>
+              <span>{{ event.dateTime | date:'d MMMM y, HH:mm' }}</span>
+            </div>
+            
+            <div class="detail">
+              <mat-icon>location_on</mat-icon>
+              <span>{{ event.location }}</span>
+            </div>
+            
+            <div class="detail">
+              <mat-icon>supervisor_account</mat-icon>
+              <span>{{ event.availableSeats || event.totalSeats }} places disponibles</span>
+            </div>
+          </div>
+          
+          <div class="event-categories">
+            <span class="category-tag" *ngFor="let category of event.categories">{{ category }}</span>
+          </div>
+        </div>
+      </mat-card-content>
+      
+      <mat-card-actions>
+        <button mat-stroked-button color="primary" [routerLink]="['/events', event.id]">
+          Détails
+        </button>
+        <button mat-raised-button color="accent" [routerLink]="['/events', event.id]">
+          Réserver
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

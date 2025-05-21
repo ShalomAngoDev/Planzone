@@ -1,0 +1,53 @@
+<div class="home-container">
+  <div class="hero-section">
+    <h1 class="page-title">Bienvenue sur <span class="highlight">planZone</span></h1>
+    <p class="subtitle">Votre plateforme de réservation d'événements simple et efficace</p>
+  </div>
+
+  <mat-card class="welcome-card">
+    <div class="card-content">
+      <div class="text-content">
+        <h2>Réservez vos places pour les meilleurs événements</h2>
+        <p>
+          Découvrez une sélection d'événements exclusifs et réservez vos places en quelques clics.
+          Que ce soit un concert, une conférence ou un atelier, ne manquez plus aucun événement !
+        </p>
+        <div class="action-buttons">
+          <button mat-raised-button color="primary" routerLink="/events">
+            <mat-icon>search</mat-icon> Explorer les événements
+          </button>
+          <button mat-stroked-button color="accent" routerLink="/auth/register">
+            Créer un compte
+          </button>
+        </div>
+      </div>
+      <div class="image-container">
+        <img src="assets/illustration.png" alt="Illustration d'événements" class="event-image">
+      </div>
+    </div>
+  </mat-card>
+
+  <div class="features-section">
+    <h2>Pourquoi choisir planZone ?</h2>
+
+    <div class="features-grid">
+      <mat-card class="feature-card">
+        <mat-icon color="primary">search</mat-icon>
+        <h3>Trouvez facilement</h3>
+        <p>Découvrez des événements qui correspondent à vos centres d'intérêt.</p>
+      </mat-card>
+
+      <mat-card class="feature-card">
+        <mat-icon color="primary">bookmark</mat-icon>
+        <h3>Réservez instantanément</h3>
+        <p>Quelques clics suffisent pour assurer votre place à l'événement.</p>
+      </mat-card>
+
+      <mat-card class="feature-card">
+        <mat-icon color="primary">notifications</mat-icon>
+        <h3>Restez informé</h3>
+        <p>Recevez des rappels et mises à jour sur vos événements à venir.</p>
+      </mat-card>
+    </div>
+  </div>
+</div>

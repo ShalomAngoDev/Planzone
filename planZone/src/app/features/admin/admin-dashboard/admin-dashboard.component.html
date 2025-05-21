@@ -1,0 +1,82 @@
+<div class="admin-container">
+    <h1 class="page-title">Tableau de bord administrateur</h1>
+    
+    <div class="admin-dashboard">
+      <div class="dashboard-stats">
+        <mat-card class="stats-card">
+          <mat-card-content>
+            <div class="stat-item">
+              <div class="stat-icon">
+                <mat-icon>event</mat-icon>
+              </div>
+              <div class="stat-details">
+                <span class="stat-value">{{ eventStats.total }}</span>
+                <span class="stat-label">Événements</span>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        
+        <mat-card class="stats-card">
+          <mat-card-content>
+            <div class="stat-item">
+              <div class="stat-icon">
+                <mat-icon>confirmation_number</mat-icon>
+              </div>
+              <div class="stat-details">
+                <span class="stat-value">{{ bookingStats.total }}</span>
+                <span class="stat-label">Réservations</span>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        
+        <mat-card class="stats-card">
+          <mat-card-content>
+            <div class="stat-item">
+              <div class="stat-icon">
+                <mat-icon>people</mat-icon>
+              </div>
+              <div class="stat-details">
+                <span class="stat-value">{{ userStats.total }}</span>
+                <span class="stat-label">Utilisateurs</span>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      
+      <div class="admin-actions">
+        <mat-card class="action-card">
+          <mat-card-header>
+            <mat-card-title>Gestion des événements</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>Créez, modifiez et supprimez des événements.</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="primary" routerLink="/admin/events">
+              <mat-icon>list</mat-icon> Gérer les événements
+            </button>
+            <button mat-raised-button color="accent" routerLink="/admin/events/create">
+              <mat-icon>add</mat-icon> Créer un événement
+            </button>
+          </mat-card-actions>
+        </mat-card>
+        
+        <mat-card class="action-card">
+          <mat-card-header>
+            <mat-card-title>Réservations</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>Consultez et gérez toutes les réservations.</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="primary" routerLink="/admin/bookings">
+              <mat-icon>bookmarks</mat-icon> Voir les réservations
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>

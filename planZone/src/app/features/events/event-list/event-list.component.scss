@@ -1,0 +1,153 @@
+.events-container {
+  padding: 20px 0;
+}
+
+.events-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+  
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+  
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    margin-top: 0;
+    
+    mat-form-field {
+      width: 300px;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    mat-form-field {
+      width: 100%;
+    }
+    
+    mat-button-toggle-group {
+      width: 100%;
+      
+      mat-button-toggle {
+        flex: 1;
+      }
+    }
+  }
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+}
+
+.no-events {
+  text-align: center;
+  margin: 50px 0;
+  color: #666;
+  
+  mat-icon {
+    font-size: 48px;
+    height: 48px;
+    width: 48px;
+    margin-bottom: 16px;
+    color: #ccc;
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.event-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  img {
+    height: 160px;
+    object-fit: cover;
+  }
+}
+
+mat-card-content {
+  flex-grow: 1;
+}
+
+.event-info {
+  padding: 8px 0;
+}
+
+.event-title {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: #00838f;
+}
+
+.event-details {
+  margin-bottom: 16px;
+  
+  .detail {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    
+    mat-icon {
+      font-size: 18px;
+      height: 18px;
+      width: 18px;
+      margin-right: 8px;
+      color: #555;
+    }
+    
+    span {
+      font-size: 14px;
+      color: #555;
+    }
+  }
+}
+
+.event-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+  
+  .category-tag {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 16px;
+    background-color: #e0f7fa;
+    color: #00838f;
+  }
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 16px 16px;
+}

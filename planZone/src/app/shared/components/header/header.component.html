@@ -1,0 +1,64 @@
+<mat-toolbar color="primary" class="header-toolbar">
+  <div class="logo-container" routerLink="/">
+    <mat-icon>event</mat-icon>
+    <span class="logo">planZone</span>
+  </div>
+  
+  <span class="spacer"></span>
+  
+  <div class="nav-links">
+    <button mat-button routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+      <mat-icon>home</mat-icon> Accueil
+    </button>
+    
+    <button mat-button routerLink="/events" routerLinkActive="active-link">
+      <mat-icon>calendar_today</mat-icon> Événements
+    </button>
+    
+    <!-- Menu pour utilisateur non connecté -->
+    <ng-container *ngIf="(authService.isAuthenticated$ | async) === false">
+      <button mat-button routerLink="/auth/login" routerLinkActive="active-link">
+        <mat-icon>login</mat-icon> Connexion
+      </button>
+      
+      <button mat-raised-button color="accent" routerLink="/auth/register" routerLinkActive="active-accent">
+        <mat-icon>person_add</mat-icon> S'inscrire
+      </button>
+    </ng-container>
+    
+    <!-- Menu pour utilisateur connecté -->
+    <ng-container *ngIf="authService.isAuthenticated$ | async">
+      <button mat-button routerLink="/bookings" routerLinkActive="active-link">
+        <mat-icon>bookmarks</mat-icon> Mes réservations
+      </button>
+      
+      <!-- Menu admin (si l'utilisateur est admin) -->
+      <button mat-button routerLink="/admin" routerLinkActive="active-link" *ngIf="authService.isAdmin()">
+        <mat-icon>admin_panel_settings</mat-icon> Administration
+      </button>
+      
+      <!-- Menu utilisateur avec dropdown -->
+      <button mat-button [matMenuTriggerFor]="userMenu" class="user-menu-button">
+        <div class="user-avatar">
+          <mat-icon>account_circle</mat-icon>
+        </div>
+        <span class="username">{{ (authService.currentUser$ | async)?.username }}</span>
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      
+      <mat-menu #userMenu="matMenu">
+        <button mat-menu-item routerLink="/profile">
+          <mat-icon>person</mat-icon>
+          <span>Mon profil</span>
+        </button>
+        
+        <mat-divider></mat-divider>
+        
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Se déconnecter</span>
+        </button>
+      </mat-menu>
+    </ng-container>
+  </div>
+</mat-toolbar>

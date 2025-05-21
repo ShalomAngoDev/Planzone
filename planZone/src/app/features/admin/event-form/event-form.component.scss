@@ -1,0 +1,86 @@
+.event-form-container {
+    padding: 20px 0;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .form-card {
+    padding: 24px;
+  }
+  
+  .form-section {
+    margin-bottom: 32px;
+    
+    h2 {
+      font-size: 18px;
+      font-weight: 500;
+      color: #00838f;
+      margin-bottom: 16px;
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 8px;
+    }
+  }
+  
+  .full-width {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    
+    @media (max-width: 600px) {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+  
+  .half-width {
+    flex: 1;
+    
+    @media (max-width: 600px) {
+      width: 100%;
+      margin-bottom: 16px;
+    }
+  }
+  
+  .image-preview {
+    margin-top: 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 8px;
+    
+    img {
+      max-width: 100%;
+      max-height: 300px;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-top: 24px;
+  }
+  
+  .form-error {
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+    padding: 12px;
+    background-color: #ffebee;
+    border-radius: 4px;
+    
+    mat-icon {
+      color: #f44336;
+      margin-right: 8px;
+    }
+    
+    span {
+      color: #c62828;
+    }
+  }

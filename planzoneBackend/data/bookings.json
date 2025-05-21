@@ -1,0 +1,22 @@
+[ {
+  "id" : "5bd23be2-3b3b-4bbf-9140-7e0cff3631d7",
+  "userId" : "ec7701ae-69e9-4e65-bcaa-8ca1ad24385",
+  "eventId" : "2a1789af-7e6b-4ff5-9f2b-2419344a9c1a",
+  "numberOfSeats" : 2,
+  "bookingDate" : "2025-05-21T13:42:51.2179211",
+  "status" : "CONFIRMED"
+}, {
+  "id" : "ca09e991-6855-4c81-9869-a6a975290f35",
+  "userId" : "ec7701ae-69e9-4e65-bcaa-8ca1ad243853",
+  "eventId" : "2a1789af-7e6b-4ff5-9f2b-2419344a9c1a",
+  "numberOfSeats" : 2,
+  "bookingDate" : "2025-05-21T13:43:25.9749491",
+  "status" : "CONFIRMED"
+}, {
+  "id" : "ebb85e72-ca58-4cfe-8b0d-59e81afb636f",
+  "userId" : "ec7701ae-69e9-4e65-bcaa-8ca1ad243853",
+  "eventId" : "2a1789af-7e6b-4ff5-9f2b-2419344a9c1a",
+  "numberOfSeats" : 1,
+  "bookingDate" : "2025-05-21T13:53:30.6217396",
+  "status" : "CONFIRMED"
+} ]

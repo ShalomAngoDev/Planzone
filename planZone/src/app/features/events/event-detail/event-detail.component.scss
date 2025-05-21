@@ -1,0 +1,245 @@
+.event-detail-container {
+  margin-bottom: 40px;
+}
+
+.event-header {
+  margin-bottom: 24px;
+  display: flex;
+  align-items: flex-start;
+  
+  .back-button {
+    margin-right: 16px;
+    margin-top: 4px;
+  }
+  
+  .title-section {
+    flex: 1;
+  }
+}
+
+.page-title {
+  margin-bottom: 12px;
+}
+
+.event-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  
+  .category-tag {
+    font-size: 14px;
+    padding: 4px 12px;
+    border-radius: 16px;
+    background-color: #e0f7fa;
+    color: #00838f;
+  }
+}
+
+.event-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  
+  @media (min-width: 900px) {
+    flex-direction: row;
+  }
+}
+
+.event-main {
+  flex: 3;
+  
+  .event-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 24px;
+  }
+  
+  mat-card {
+    h2 {
+      font-size: 22px;
+      font-weight: 500;
+      color: #00838f;
+      margin-bottom: 16px;
+    }
+    
+    .event-description {
+      white-space: pre-line;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    
+    .organizer-info {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid #e0e0e0;
+      
+      h3 {
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 8px;
+        color: #00838f;
+      }
+    }
+  }
+}
+
+.event-sidebar {
+  flex: 1;
+  
+  .booking-card {
+    position: sticky;
+    top: 24px;
+  }
+  
+  .event-details {
+    margin-bottom: 24px;
+    
+    .detail {
+      display: flex;
+      margin-bottom: 16px;
+      
+      mat-icon {
+        margin-right: 16px;
+        color: #00838f;
+      }
+      
+      .detail-label {
+        display: block;
+        font-size: 12px;
+        color: #757575;
+        margin-bottom: 4px;
+      }
+      
+      .detail-value {
+        font-weight: 500;
+      }
+    }
+  }
+
+  .custom-field {
+    // Couleur du texte de l'input
+    .mat-mdc-input-element {
+      color: #333333 !important;
+    }
+    
+    // Couleur du contour
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border-color: #00838f !important; // Couleur cyan
+    }
+    
+    // Couleur du label
+    .mat-mdc-floating-label {
+      color: rgba(0, 0, 0, 0.8) !important; // Cyan légèrement transparent
+    }
+    
+    // Couleur de focus
+    &.mat-focused {
+      .mdc-notched-outline__leading,
+      .mdc-notched-outline__notch,
+      .mdc-notched-outline__trailing {
+        border-color: #00acc1 !important; // Cyan plus clair au focus
+      }
+      
+      .mat-mdc-floating-label {
+        color: #00acc1 !important;
+      }
+    }
+    
+    // Fond du champ
+    .mdc-text-field--outlined {
+      background-color: #f5fcfd !important; // Fond légèrement bleuté
+    }
+  }
+  
+  .booking-form {
+    h3 {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 16px;
+      color: #00838f;
+    }
+    
+    button {
+      width: 100%;
+      margin-top: 8px;
+    }
+    
+    .booking-success {
+      display: flex;
+      align-items: center;
+      margin-top: 16px;
+      padding: 12px;
+      background-color: #e8f5e9;
+      border-radius: 4px;
+      
+      mat-icon {
+        color: #4caf50;
+        margin-right: 8px;
+      }
+      
+      span {
+        color: #2e7d32;
+      }
+    }
+    
+    .booking-error {
+      display: flex;
+      align-items: center;
+      margin-top: 16px;
+      padding: 12px;
+      background-color: #ffebee;
+      border-radius: 4px;
+      
+      mat-icon {
+        color: #f44336;
+        margin-right: 8px;
+      }
+      
+      span {
+        color: #c62828;
+      }
+    }
+  }
+  
+  .login-prompt {
+    text-align: center;
+    padding: 16px 0;
+    
+    p {
+      margin-bottom: 16px;
+      color: #757575;
+    }
+  }
+}
+
+.loading-container, .error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
+  
+  mat-icon {
+    font-size: 48px;
+    height: 48px;
+    width: 48px;
+    margin-bottom: 16px;
+    color: #ccc;
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  p {
+    margin-bottom: 24px;
+    color: #666;
+    text-align: center;
+  }
+}

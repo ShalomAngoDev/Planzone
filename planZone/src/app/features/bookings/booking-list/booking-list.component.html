@@ -1,0 +1,71 @@
+<div class="bookings-container">
+  <h1 class="page-title">Mes réservations</h1>
+
+  <div class="loading-container" *ngIf="loading">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+
+  <div class="no-bookings" *ngIf="!loading && bookings.length === 0">
+    <mat-icon>event_busy</mat-icon>
+    <h2>Aucune réservation trouvée</h2>
+    <p>Vous n'avez pas encore réservé d'événement.</p>
+    <button mat-raised-button color="primary" routerLink="/events">
+      Découvrir les événements
+    </button>
+  </div>
+
+  <div class="bookings-list" *ngIf="!loading && bookings.length > 0">
+    <mat-card *ngFor="let booking of bookings" class="booking-card">
+      <mat-card-header>
+        <div mat-card-avatar class="booking-avatar">
+          <mat-icon>event</mat-icon>
+        </div>
+        <mat-card-title>{{ booking.event?.title || 'Événement inconnu' }}</mat-card-title>
+        <mat-card-subtitle>
+          Réservé le {{ booking.bookingDate | date:'dd/MM/yyyy' }}
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="booking-details">
+          <div class="detail">
+            <mat-icon>access_time</mat-icon>
+            <span>{{ booking.event?.dateTime | date:'EEEE d MMMM y, HH:mm' }}</span>
+          </div>
+
+          <div class="detail">
+            <mat-icon>location_on</mat-icon>
+            <span>{{ booking.event?.location }}</span>
+          </div>
+
+          <div class="detail">
+            <mat-icon>confirmation_number</mat-icon>
+            <span>{{ booking.numberOfSeats }} {{ booking.numberOfSeats > 1 ? 'places' : 'place' }}</span>
+          </div>
+
+          <div class="detail" *ngIf="booking.status">
+            <mat-icon>info</mat-icon>
+            <span [ngClass]="{'status-confirmed': booking.status === 'CONFIRMED', 
+                             'status-pending': booking.status === 'PENDING',
+                             'status-cancelled': booking.status === 'CANCELLED'}">
+              {{ getStatusLabel(booking.status) }}
+            </span>
+          </div>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions align="end">
+        <button mat-button color="primary" [routerLink]="['/events', booking.eventId]">
+          <mat-icon>visibility</mat-icon>
+          Voir l'événement
+        </button>
+        <button mat-button color="warn" (click)="openCancelDialog(booking)"
+                [disabled]="booking.status === 'CANCELLED' || isEventPassed(booking.event?.dateTime)"
+                *ngIf="booking.status !== 'CANCELLED'">
+          <mat-icon>cancel</mat-icon>
+          Annuler
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

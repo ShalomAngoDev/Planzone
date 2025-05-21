@@ -1,0 +1,67 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.page-title {
+  color: #00838f;
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: 500;
+}
+
+// Override pour les cartes Material
+.mat-mdc-card {
+  --mdc-elevated-card-container-color: #ffffff !important;
+  background-color: #efefef !important;
+}
+
+// Pour assurer que le texte est lisible sur fond blanc
+.mat-mdc-card-content {
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+// Si besoin d'ajuster d'autres éléments de la carte
+.mat-mdc-card-title, .mat-mdc-card-subtitle {
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+// Customisation globale des champs de formulaire
+.mat-mdc-form-field.mat-mdc-form-field-type-mat-input.mat-form-field-appearance-outline {
+  // Couleur du texte de l'input
+  .mat-mdc-input-element {
+    color: #333333;
+  }
+  
+  // Couleur du contour par défaut
+  .mdc-notched-outline__leading,
+  .mdc-notched-outline__notch,
+  .mdc-notched-outline__trailing {
+    border-color: rgba(0, 131, 143, 0.5);
+  }
+  
+  // Couleur du label
+  .mat-mdc-floating-label {
+    color: rgba(0, 131, 143, 0.8);
+  }
+  
+  // Style au focus
+  &.mat-focused {
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border-color: #00acc1;
+      border-width: 2px;
+    }
+    
+    .mat-mdc-floating-label {
+      color: #00acc1;
+    }
+  }
+  
+  // Fond du champ
+  .mdc-text-field--outlined {
+    background-color: white;
+  }
+}

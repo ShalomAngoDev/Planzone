@@ -1,0 +1,108 @@
+<div class="event-detail-container" *ngIf="!loading && event">
+  <div class="event-header">
+    <div class="back-button">
+      <button mat-icon-button color="primary" routerLink="/events">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+    </div>
+    
+    <div class="title-section">
+      <h1 class="page-title">{{ event.title }}</h1>
+      <div class="event-categories">
+        <span class="category-tag" *ngFor="let category of event.categories">{{ category }}</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="event-content">
+    <div class="event-main">
+      <img [src]="event.imageUrl || 'https://via.placeholder.com/800x400'" alt="{{ event.title }}" class="event-image">
+      
+      <mat-card>
+        <mat-card-content>
+          <h2>À propos de cet événement</h2>
+          <p class="event-description">{{ event.description }}</p>
+          
+          <div class="organizer-info">
+            <h3>Organisateur</h3>
+            <p>{{ event.organizer }}</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    
+    <div class="event-sidebar">
+      <mat-card class="booking-card">
+        <mat-card-content>
+          <div class="event-details">
+            <div class="detail">
+              <mat-icon>access_time</mat-icon>
+              <div>
+                <span class="detail-label">Date et heure</span>
+                <span class="detail-value">{{ event.dateTime | date:'EEEE d MMMM y, HH:mm' }}</span>
+              </div>
+            </div>
+            
+            <div class="detail">
+              <mat-icon>location_on</mat-icon>
+              <div>
+                <span class="detail-label">Lieu</span>
+                <span class="detail-value">{{ event.location }}</span>
+              </div>
+            </div>
+            
+            <div class="detail">
+              <mat-icon>event_seat</mat-icon>
+              <div>
+                <span class="detail-label">Places disponibles</span>
+                <span class="detail-value">{{ event.availableSeats || event.totalSeats }}</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="booking-form" *ngIf="authService.isAuthenticated$ | async; else loginPrompt">
+            <h3>Réserver des places</h3>
+            
+            <mat-form-field appearance="outline" class="full-width custom-field">
+              <mat-label>Nombre de places</mat-label>
+              <input matInput type="number" [(ngModel)]="numberOfSeats" min="1" max="{{ event.availableSeats || event.totalSeats }}">
+            </mat-form-field>
+            
+            <button mat-raised-button color="accent" [disabled]="!numberOfSeats || numberOfSeats < 1 || isBooking" (click)="bookEvent()">
+              <mat-spinner *ngIf="isBooking" diameter="20"></mat-spinner>
+              <span *ngIf="!isBooking">Réserver maintenant</span>
+            </button>
+            
+            <div class="booking-success" *ngIf="bookingSuccess">
+              <mat-icon>check_circle</mat-icon>
+              <span>Réservation confirmée !</span>
+            </div>
+            
+            <div class="booking-error" *ngIf="bookingError">
+              <mat-icon>error</mat-icon>
+              <span>{{ bookingError }}</span>
+            </div>
+          </div>
+          
+          <ng-template #loginPrompt>
+            <div class="login-prompt">
+              <p>Connectez-vous pour réserver des places pour cet événement.</p>
+              <button mat-raised-button color="primary" routerLink="/auth/login">Se connecter</button>
+            </div>
+          </ng-template>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<div class="loading-container" *ngIf="loading">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div class="error-container" *ngIf="!loading && !event">
+  <mat-icon>error_outline</mat-icon>
+  <h2>Événement introuvable</h2>
+  <p>L'événement que vous recherchez n'existe pas ou a été supprimé.</p>
+  <button mat-raised-button color="primary" routerLink="/events">Voir tous les événements</button>
+</div>

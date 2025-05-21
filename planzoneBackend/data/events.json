@@ -1,0 +1,34 @@
+[ {
+  "id" : "2a1789af-7e6b-4ff5-9f2b-2419344a9c1a",
+  "title" : "Conférence sur l'IA",
+  "description" : "Découvrez les dernières avancées en intelligence artificielle.",
+  "dateTime" : "2025-05-27T20:57:09.9881574",
+  "location" : "Centre de Conférences, Lyon",
+  "totalSeats" : 150,
+  "availableSeats" : 143,
+  "organizer" : "TechInnov",
+  "categories" : [ "Technologie", "IA", "Conférence" ],
+  "imageUrl" : "https://placehold.co/600x400"
+}, {
+  "id" : "e8418aa3-f59d-4e62-a929-dc57abb159cb",
+  "title" : "Atelier de peinture",
+  "description" : "Apprenez les techniques de base de la peinture à l'huile.",
+  "dateTime" : "2025-05-23T18:57:09.998",
+  "location" : "Galerie d'Art, Bordeaux",
+  "totalSeats" : 20,
+  "availableSeats" : 20,
+  "organizer" : "ArtsVisuels",
+  "categories" : [ "Art", "Peinture", "Atelier" ],
+  "imageUrl" : "https://placehold.co/600x400"
+}, {
+  "id" : "93d5bedf-ef7c-4b62-8a27-d96e47e15c42",
+  "title" : "Concert de Jazz",
+  "description" : "Une soirée mémorable avec les meilleurs musiciens de jazz.",
+  "dateTime" : "2025-06-04T18:57:09.973",
+  "location" : "Salle Pleyel, Paris",
+  "totalSeats" : 5,
+  "availableSeats" : 4,
+  "organizer" : "JazzPassion",
+  "categories" : [ "Musique", "Jazz", "Concert" ],
+  "imageUrl" : "https://placehold.co/600x400"
+} ]

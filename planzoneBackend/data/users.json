@@ -1,0 +1,37 @@
+[ {
+  "id" : "d56cbcef-1162-47c8-9272-b588891d9894",
+  "username" : "admin",
+  "email" : "admin@planzone.com",
+  "password" : "$2a$10$6knIqGFKe.JES7i7E8SqjOuGt8i/qafwzgl6KNhMCCtOd1f708T0u",
+  "role" : "ROLE_ADMIN"
+}, {
+  "id" : "a097694f-4258-486a-a4cd-53d8a866fce2",
+  "username" : "user",
+  "email" : "user@planzone.com",
+  "password" : "$2a$10$/cf5urbOckjIrPpgdugTi.W61VLzaSRDrCi9cC.IaOKEDnIEzWx9W",
+  "role" : "ROLE_USER"
+}, {
+  "id" : "91e769b0-a553-41c7-ac15-6707677bf6b5",
+  "username" : "john_doe",
+  "email" : "john@example.com",
+  "password" : "$2a$10$CK1fbLK2kodhJwOb4Eecjuuod3L5vFTsE8NWDwNLyD4lZlC9hF/rC",
+  "role" : "ROLE_USER"
+}, {
+  "id" : "690f6d2d-d2c7-4f2c-9790-15181e70de91",
+  "username" : "ango",
+  "email" : "angoshalom@gmail.com",
+  "password" : "$2a$10$X3M9QCRmK9VE3PdHwZzeoeZpwOJnR1QmAdFJbxfjyAc3mA2unzJva",
+  "role" : "ROLE_USER"
+}, {
+  "id" : "ec7701ae-69e9-4e65-bcaa-8ca1ad243853",
+  "username" : "bob",
+  "email" : "bob@gmail.com",
+  "password" : "$2a$10$1wIeekbIefcoWePW8TmrCOeP0DbotRThktpXOR3KuHV3iTS1AcXbK",
+  "role" : "ROLE_USER"
+}, {
+  "id" : "b48551ea-8ddc-45f7-9946-fb75d02b6333",
+  "username" : "boss",
+  "email" : "boss@example.com",
+  "password" : "$2a$10$xh3VLIa8QdqoZw2q.eqHIOIOVThLT5WAlVlyrKNLhu6I9DCjQ/2PW",
+  "role" : "ROLE_ADMIN"
+} ]

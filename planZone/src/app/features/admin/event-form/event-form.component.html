@@ -1,0 +1,105 @@
+<div class="event-form-container">
+  <h1 class="page-title">{{ isEditMode ? 'Modifier l\'événement' : 'Créer un événement' }}</h1>
+  
+  <mat-card class="form-card">
+    <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+      <div class="form-section">
+        <h2>Informations générales</h2>
+        
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Titre de l'événement</mat-label>
+          <input matInput formControlName="title" required>
+          <mat-error *ngIf="eventForm.get('title')?.hasError('required')">
+            Le titre est requis
+          </mat-error>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description" rows="4" required></textarea>
+          <mat-error *ngIf="eventForm.get('description')?.hasError('required')">
+            La description est requise
+          </mat-error>
+        </mat-form-field>
+        
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>Date et heure</mat-label>
+            <input matInput formControlName="dateTime" [matDatepicker]="picker" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="eventForm.get('dateTime')?.hasError('required')">
+              La date est requise
+            </mat-error>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>Lieu</mat-label>
+            <input matInput formControlName="location" required>
+            <mat-error *ngIf="eventForm.get('location')?.hasError('required')">
+              Le lieu est requis
+            </mat-error>
+          </mat-form-field>
+        </div>
+        
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>Nombre total de places</mat-label>
+            <input matInput type="number" formControlName="totalSeats" required min="1">
+            <mat-error *ngIf="eventForm.get('totalSeats')?.hasError('required')">
+              Le nombre de places est requis
+            </mat-error>
+            <mat-error *ngIf="eventForm.get('totalSeats')?.hasError('min')">
+              Le nombre de places doit être supérieur à 0
+            </mat-error>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>Organisateur</mat-label>
+            <input matInput formControlName="organizer" required>
+            <mat-error *ngIf="eventForm.get('organizer')?.hasError('required')">
+              L'organisateur est requis
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      
+      <div class="form-section">
+        <h2>Catégories</h2>
+        
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Catégories (séparées par des virgules)</mat-label>
+          <input matInput formControlName="categories">
+          <mat-hint>Ex: Concert, Jazz, Musique</mat-hint>
+        </mat-form-field>
+      </div>
+      
+      <div class="form-section">
+        <h2>Image</h2>
+        
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>URL de l'image</mat-label>
+          <input matInput formControlName="imageUrl">
+          <mat-hint>Lien vers une image représentant l'événement</mat-hint>
+        </mat-form-field>
+        
+        <div class="image-preview" *ngIf="eventForm.get('imageUrl')?.value">
+          <img [src]="eventForm.get('imageUrl')?.value" alt="Aperçu de l'événement">
+        </div>
+      </div>
+      
+      <div class="form-actions">
+        <button mat-button type="button" (click)="goBack()">Annuler</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="eventForm.invalid || isSaving">
+          <mat-spinner *ngIf="isSaving" diameter="20"></mat-spinner>
+          <span *ngIf="!isSaving">{{ isEditMode ? 'Mettre à jour' : 'Créer' }}</span>
+        </button>
+      </div>
+      
+      <div class="form-error" *ngIf="errorMessage">
+        <mat-icon>error</mat-icon>
+        <span>{{ errorMessage }}</span>
+      </div>
+    </form>
+  </mat-card>
+</div>
